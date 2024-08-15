@@ -1,6 +1,6 @@
 {
-  "name": "template",
-  "version": "1.0.0",
+  "name": "arxiv",
+  "version": "1.0.1",
   "description": "Base template for agents",
   "main": "index.js",
   "scripts": {
