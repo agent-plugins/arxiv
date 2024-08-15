@@ -100,15 +100,7 @@ app.get('/search/', (req, res) => {
 
 // LLM to create the queries
 app.get('/freesearch/', (req, res) => {
-    if (req.query["keywords"] == undefined || req.query["limit"] == undefined || req.query["negative"] == undefined) return res.status(400).send("Missing search, limit, or negative query parameters")
-
-    let search = req.query["keywords"]
-    let limit = req.query["limit"]
-    let negative = req.query["negative"]
-
-    let query = `search_query=${search}&max_results=${limit}`
-    if (negative != undefined) query += `&exclude_fields=${negative}`
-
+    if (req.query["query"] == undefined) return res.status(400).send("Missing query parameters \"query\"")
     axios.get(`https://export.arxiv.org/api/query?${query}`).then((response) => {
         res.send(response.data)
     })
